@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REEM IS 18 ✦</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --pink: #FF1B8D;
+      --bg: #080808;
+      --surface: #0e0e0e;
+      --white: #F0EDE6;
+      --grey: #666;
+      --dimgrey: #333;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Lora', serif;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.35;
+    }
+
+    .marquee-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      background: var(--gold);
+      overflow: hidden;
+      padding: 9px 0;
+    }
+    .marquee-track {
+      display: flex;
+      animation: marquee 25s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      color: #000;
+      padding: 0 50px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      top: 10%; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 8px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.4s;
+    }
+
+    /* ── PHOTO SLOTS ── */
+    .photo-slot {
+      position: relative;
+      display: block;
+    }
+    .photo-slot::before {
+      content: '';
+      position: absolute;
+      top: -7px; left: -7px;
+      right: 7px; bottom: 7px;
+      border: 1px solid var(--gold);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .photo-slot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-photo-wrap {
+      width: 240px;
+      height: 320px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.7s;
+      margin-bottom: -20px;
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .hero-photo-wrap img {
+      width: 240px;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 20vw, 16rem);
+      line-height: 0.82;
+      text-align: center;
+      position: relative; z-index: 2;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1s;
+    }
+    .glitch-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch-wrap::before,
+    .glitch-wrap::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: inherit;
+    }
+    .glitch-wrap::before {
+      color: var(--pink);
+      animation: glitch1 4s infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
+    }
+    .glitch-wrap::after {
+      color: var(--gold);
+      animation: glitch2 4s infinite;
+      clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
+    }
+    @keyframes glitch1 {
+      0%,89%,100% { transform: none; }
+      91% { transform: translateX(-5px); }
+      93% { transform: translateX(4px); }
+      95% { transform: translateX(-2px); }
+    }
+    @keyframes glitch2 {
+      0%,86%,100% { transform: none; }
+      88% { transform: translateX(4px); }
+      91% { transform: translateX(-3px); }
+      94% { transform: translateX(2px); }
+    }
+
+    .hero-subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(0.6rem, 1.8vw, 0.85rem);
+      letter-spacing: 5px;
+      color: var(--grey);
+      text-transform: uppercase;
+      margin-top: 24px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.3s;
+    }
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 4px;
+      color: var(--grey);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 2s, bobble 2.5s ease infinite 2.2s;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 60px;
+    }
+
+    .section-wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+    .section-label {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 7px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .big-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: 0.88;
+      margin-bottom: 50px;
+    }
+    .big-title .g { color: var(--gold); }
+    .big-title .p { color: var(--pink); }
+
+    .body-text {
+      font-size: 1.08rem;
+      line-height: 2;
+      color: #bbb;
+      max-width: 640px;
+    }
+    .body-text + .body-text { margin-top: 24px; }
+
+    .pull-quote {
+      border-left: 2px solid var(--pink);
+      padding: 18px 28px;
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.75;
+      color: var(--white);
+      margin: 44px 0;
+    }
+    .pull-quote.gold { border-color: var(--gold); }
+
+    /* ── SPLIT: photo fills full height of text column ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: stretch;   /* stretch so photo matches text height */
+    }
+    .split.flip { direction: rtl; }
+    .split.flip > * { direction: ltr; }
+
+    /* photo-slot inside split fills its grid cell */
+    .split .photo-slot {
+      width: 100%;
+      min-height: 400px;
+    }
+    .split .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tags { margin-top: 36px; }
+    .tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 2px;
+      padding: 5px 14px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      margin: 3px;
+    }
+    .tag.p { border-color: var(--pink); color: var(--pink); }
+
+    .gayyar-section {
+      background: linear-gradient(180deg, transparent, rgba(255,27,141,0.04), transparent);
+      padding: 120px 48px;
+    }
+    .gayyar-inner { max-width: 1160px; margin: 0 auto; }
+
+    .bw-section {
+      background: var(--surface);
+      padding: 120px 48px;
+    }
+    .bw-inner { max-width: 1160px; margin: 0 auto; }
+
+    /* BASEF */
+    .basef-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-rows: auto;
+      gap: 12px;
+      margin: 60px 0;
+    }
+    .basef-main {
+      grid-row: 1 / 3;
+    }
+    .basef-grid .photo-slot {
+      width: 100%;
+    }
+    .basef-grid .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .basef-main img {
+      min-height: 440px;
+    }
+    .basef-side img {
+      min-height: 214px;
+    }
+
+    .letter-section {
+      padding: 140px 48px;
+      background: #050505;
+    }
+    .letter-inner { max-width: 780px; margin: 0 auto; }
+    .letter-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.88;
+      margin-bottom: 70px;
+    }
+    .letter-body {
+      font-size: 1.12rem;
+      line-height: 2.2;
+      color: #c0c0c0;
+    }
+    .letter-body p { margin-bottom: 36px; }
+    .sig {
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-top: 60px;
+    }
+
+    .footer {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #030303;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .footer-bg-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(12rem, 40vw, 36rem);
+      color: rgba(201,168,76,0.055);
+      position: absolute;
+      letter-spacing: -10px;
+      user-select: none;
+      line-height: 1;
+    }
+    .footer-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 6rem);
+      position: relative; z-index: 2;
+    }
+    .footer-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-top: 20px;
+      position: relative; z-index: 2;
+    }
+    .footer-made {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 3px;
+      color: #2a2a2a;
+      margin-top: 60px;
+      position: relative; z-index: 2;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(55px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-delay  { transition-delay: 0.15s; }
+    .reveal-delay2 { transition-delay: 0.3s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bobble {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+
+    .emoji-float {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.4rem;
+      animation: floatUp var(--dur, 7s) ease-in var(--delay, 0s) infinite;
+      left: var(--x, 50vw);
+      bottom: -40px;
+      z-index: 40;
+    }
+    @keyframes floatUp {
+      0%   { opacity: 0; transform: translateY(0) scale(0.6) rotate(-10deg); }
+      8%   { opacity: 1; }
+      92%  { opacity: 0.8; }
+      100% { opacity: 0; transform: translateY(-110vh) scale(1.1) rotate(10deg); }
+    }
+
+    @media (max-width: 860px) {
+      .split, .split.flip {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        direction: ltr;
+      }
+      .basef-grid { grid-template-columns: 1fr; }
+      .basef-main { grid-row: auto; }
+      .section-wrap, .gayyar-section, .bw-section, .letter-section { padding: 80px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti" style="position:fixed;inset:0;pointer-events:none;z-index:300;width:100%;height:100%;"></canvas>
+
+<audio id="bg-audio" loop>
+  <source src="song.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>✦ HAPPY 18TH BIRTHDAY REEM</span>
+    <span>✦ JUNE 1ST 2026</span>
+    <span>✦ FROM CAIRO WITH LOVE</span>
+    <span>✦ WELCOME TO ADULTHOOD BABES</span>
+    <span>✦ HAPPY 18TH BIRTHDAY REEM</span>
+    <span>✦ JUNE 1ST 2026</span>
+    <span>✦ FROM CAIRO WITH LOVE</span>
+    <span>✦ WELCOME TO ADULTHOOD BABES</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <p class="hero-eyebrow">June 1st, 2008 → June 1st, 2026</p>
+
+  <div class="hero-photo-wrap photo-slot">
+    <img src="baby1.jpeg" alt="Reem" />
+  </div>
+
+  <h1 class="hero-title">
+    <span class="glitch-wrap" data-text="REEM">REEM</span><br>
+    <span style="color:var(--gold)">IS 18</span>
+  </h1>
+  <p class="hero-subtitle">the world was not ready. it still isn't.</p>
+  <p class="scroll-cue">↓ &nbsp; S C R O L L &nbsp; ↓</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 1 — THE BEGINNING -->
+<div class="section-wrap reveal">
+  <span class="section-label">Chapter One &nbsp;</span>
+  <h2 class="big-title">LOOK AT<br>HER <span class="g">GO.</span></h2>
+
+  <div class="split">
+
+    <div>
+      <p class="body-text">
+        Nobody told us what was coming. Not really. June 1st, 2008 — the universe quietly decided to give this world a little bit of chaos and a whole lot of personality, and honestly? Best decision it ever made. You came in and you just... moved different. From the very beginning. I've seen the evidence. I've studied it. The case is closed.
+      </p>
+      <p class="body-text">
+        And here we are, eighteen years later. Thanaweyya amma season, Alexandria heat, and all of it — and you're still you, just more. More confident. More brilliant. More cool. The girl in that baby photo had no idea what she was going to become, but she was already halfway there.
+      </p>
+      <p class="body-text">
+        أنا فاكراكِ من أول ما اتكلمنا وكنت عارفة إن في حاجة في البنت دي مختلفة. And I was right. I'm always right about people who actually matter.
+      </p>
+      <div class="pull-quote gold">
+        "The thing about Reem is: she shows up. Every single time. Even when things are hard. Even when nobody's watching. She just does."
+      </div>
+      <div class="tags">
+        <span class="tag">DECI 2024–25</span>
+        <span class="tag">ROBOTICS L3</span>
+        <span class="tag">ISKANDAREYYYYYAAAA</span>
+        <span class="tag p">TURNING 18</span>
+      </div>
+    </div>
+
+    <div class="photo-slot reveal reveal-delay">
+      <img src="baby2.jpeg" alt="Reem" />
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 2 — الجيار -->
+<div class="gayyar-section">
+  <div class="gayyar-inner">
+
+    <div class="reveal">
+      <span class="section-label">The Moment of the Century &nbsp;/&nbsp; اللحظة اللي كانت بتستناها</span>
+      <h2 class="big-title">HER <span class="p">BIGGEST</span><br>DREAM. ✦</h2>
+    </div>
+
+    <div class="split flip reveal reveal-delay">
+
+      <div class="photo-slot">
+        <img src="gayyar.jpeg" alt="ElGayyar With Reem" />
+      </div>
+
+      <div>
+        <p class="body-text">
+          Okay so. We need to talk about this photo. Because I've seen it. And I need you to understand that this is not just a photo — this is a prophecy. A vision. A statement about a girl who decided that if the universe wasn't going to arrange the meeting herself, then AI was simply going to have to step in and make it happen.
+        </p>
+        <p class="body-text">
+          He doesn't know what he's missing wallahiii. You've been watching his videos, laughing at his content, quoting him in completely unrelated situations — and he has no idea that his biggest fan is out here turning 18 and serving looks and being absolutely iconic. His loss honestly. Huge loss.
+        </p>
+        <p class="body-text">
+          But for today? In this photo? You're sitting together and it's real and it's beautiful and I refuse to hear otherwise. Happy birthday from me AND from ElGayyar (he doesn't know I'm speaking for him but I think he'd agree and I'm not asking for permission).
+        </p>
+        <div class="pull-quote">
+          "she manifested this before manifesting was even a word. ElGayyar if you somehow read this — she's your biggest fan, she turns 18 today, and she's from Alexandria. do something about it."
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 3 — B&W -->
+<div class="bw-section">
+  <div class="bw-inner">
+
+    <div class="reveal">
+      <span class="section-label">Exhibit A &nbsp;</span>
+      <h2 class="big-title">COFFEE<br><span class="g">BODY.</span><br>TEA SOUL.</h2>
+    </div>
+
+    <div class="split reveal reveal-delay">
+
+      <div>
+        <p class="body-text">
+          I don't have many words for this one actually. I just need everyone who opens this page to stop. Look at this photo. Take a slow breath. And understand what we are dealing with here.
+        </p>
+        <p class="body-text">
+          There's something about a black and white photo that doesn't lie. It strips everything down — no colour, no filter, no distraction — just the raw thing. And what this photo shows is a girl who carries herself like she already knows where she's going, even on the days she's not so sure. That's a rare thing. That's a Reem thing.
+        </p>
+        <p class="body-text">
+          The fit? Legendary. The energy? Undeniable. The way she looks like she casually stepped out of a magazine editorial? طبيعي بالنسبالها honestly. I've said what I've said. The camera has never lied once in its life.
+        </p>
+        <p class="body-text">
+          Turning 18 looking like THIS? Ma'am. The audacity. The absolute disrespect to everyone around you. We love it. We accept it. Please continue.
+        </p>
+      </div>
+
+      <div class="photo-slot reveal reveal-delay2">
+        <img src="black&white.jpeg" alt="Reem" />
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 4 — COOL FIT -->
+<div class="section-wrap">
+
+  <div class="reveal">
+    <span class="section-label">The Fits / Chapter Two</span>
+    <h2 class="big-title">I SHOULD'VE<br>BEEN <span class="p">THERE.</span></h2>
+  </div>
+
+  <div class="split flip reveal reveal-delay">
+
+    <div class="photo-slot">
+      <img src="reem1.jpeg" alt="Reem" />
+    </div>
+
+    <div>
+      <p class="body-text">
+        Here's the thing. Here's the actual thing. I look at this photo and my first thought — my first instinct — was: that's where I was supposed to be. Standing right there next to her. Laughing about something stupid. Photobombing. Getting told to move because I'm ruining the aesthetic. Classic stuff.
+      </p>
+      <p class="body-text">
+        The distance between Cairo and Alexandria is like... two hours? Two and a half? And yet. AND YET. Here we are, living our best parallel lives, sending voice notes, not being in the same photo together. This is genuinely unacceptable and I want a full refund on the distance between our cities.
+      </p>
+      <p class="body-text">
+        But until the day I actually show up in Alexandria and ruin one of your photos in person — just know I was there in spirit. Spirit Zainab. Invisible, chaotic, making everything slightly more entertaining. She's present. She's always present.
+      </p>
+      <div class="pull-quote">
+        "one day. ONE DAY we will be in the same photo and it will be the most iconic thing either of us has ever done. mark my words يا ريم."
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 5 — BASEF -->
+<div class="section-wrap">
+
+  <div class="reveal">
+    <span class="section-label">BASEF &nbsp;/&nbsp; Science Fair Egypt</span>
+    <h2 class="big-title">THE GIRL<br>WHO <span class="g">SHOWS</span><br>UP.</h2>
+  </div>
+
+  <div class="reveal reveal-delay">
+    <p class="body-text" style="max-width:780px;">
+      There are people who talk about doing things. There are people who plan to do things. And then there's Reem — who actually goes and does the thing. Who submits the application. Who builds the project. Who stands in front of judges and explains her work and doesn't back down. This section is for that. For every hour of research, every moment of doubt she pushed through anyway.
+    </p>
+  </div>
+
+  <div class="basef-grid reveal reveal-delay">
+    <div class="photo-slot basef-main">
+      <img src="basef1.jpeg" alt="Reem at BASEF" />
+    </div>
+    <div class="photo-slot basef-side">
+      <img src="basef2.jpeg" alt="Reem at BASEF" />
+    </div>
+  </div>
+
+  <div class="reveal reveal-delay2" style="margin-top:70px;">
+    <p class="body-text">
+      Science fair is not easy. BASEF is not easy. Standing in front of actual judges and defending something you've put your heart into — that takes a specific kind of courage most people don't have. You have it. You always did.
+    </p>
+    <p class="body-text">
+      And here's what I want you to know, and I need you to actually hear it: it was never about the trophy. It was about the fact that you decided you were going to do this, and you did it. You showed up. You built something real. You put your name on it and stood behind it. That's everything. That's the whole point.
+    </p>
+    <p class="body-text">
+      أنا فخورة بيكِ بطريقة مش عارفة أوصفها. Like genuinely the kind of proud that makes you emotional. You worked so hard and I see every bit of it. Don't let anyone — including yourself — minimize what you did. You showed up. That's already more than most people ever do.
+    </p>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- LETTER -->
+<div class="letter-section">
+  <div class="letter-inner reveal">
+    <h2 class="letter-title">A LETTER.<br>FROM CAIRO.<br><span style="color:var(--gold)">WITH LOVE.</span></h2>
+
+    <div class="letter-body">
+      <p>
+        Reem. Okay. I've been thinking about what to write here for a while now and nothing ever feels big enough because you're not exactly a person you can summarize in a paragraph. You're more like a whole experience. Talking to you is never just talking — it's laughing until it physically hurts, it's sending voice notes at 2am and getting a reply at 2:01 because somehow you're always there. It's the kind of friendship that shouldn't work on paper — different cities, met online, never been in the same room — and somehow it's one of the most real things in my life.
+      </p>
+      <p>
+        We met through DECI. A random virtual session. One instructor, the same group, and somehow you came out of it as one of the people I trust most. I remember thinking "okay this person is funny" and then before I even noticed, you were one of the first people I think of when something happens and I want to tell someone. The weirdest thing and the most natural thing at the same time.
+      </p>
+      <p>
+        You're 18 now. EIGHTEEN. This is supposed to feel big and I think it does and I think it should — because you're not just getting older, you're getting more of everything. More you. More confident in what you love and who you are. More ready to take up space in rooms that should've had you all along. And I'm watching from Cairo with the biggest smile on my face because honestly? I cannot wait to see what this year does to you.
+      </p>
+      <p>
+        I want everything for you. I want Thanaweyya amma to be exactly what you need it to be. I want you to walk into every room this year and feel it — that thing where you just know you belong there, that you earned this. I want you to have moments that make you stop mid-day and go "wait, my life is actually amazing." I want you to rest when you need to and go absolutely crazy when you're ready and never, not once, settle for less than you actually deserve.
+      </p>
+      <p>
+        And I want us to finally be in the same city one day. I'm holding onto that so hard. We're going to laugh about all of this when we're finally standing in the same place — the DECI sessions, the voice notes, the years of being best friends through a phone screen. It'll be the best story. We'll tell it to everyone.
+      </p>
+      <p>
+        Happy 18th birthday to the coolest person in Alexandria. The world is genuinely lucky you're in it. I love you ENDLESSLY xoxoxoxoxo.
+      </p>
+    </div>
+
+    <div class="sig">— Zainab, from Cairo &nbsp;✦</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer reveal">
+  <div class="footer-bg-num">18</div>
+  <h2 class="footer-main">
+    JUNE 1ST.<br>
+    <span style="color:var(--gold)">FOREVER.</span>
+  </h2>
+  <p class="footer-sub">happy birthday reem &nbsp;✦ 2026</p>
+  <p class="footer-made">made with love from cairo &nbsp;✦&nbsp; because you deserved something real</p>
+</div>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = ['#C9A84C','#FF1B8D','#F0EDE6','#ffffff','#ffdd57','#ff6b6b'];
+  const pieces = Array.from({length: 140}, () => ({
+    x: Math.random() * innerWidth,
+    y: -(Math.random() * innerHeight * 0.5),
+    w: Math.random() * 9 + 4,
+    h: Math.random() * 4 + 2,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    speed: Math.random() * 3.5 + 1,
+    rot: Math.random() * Math.PI * 2,
+    rotV: (Math.random() - 0.5) * 0.12,
+    drift: (Math.random() - 0.5) * 1.5,
+    opacity: Math.random() * 0.7 + 0.3
+  }));
+
+  let active = true;
+  setTimeout(() => active = false, 7000);
+
+  (function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      p.y += p.speed; p.x += p.drift; p.rot += p.rotV;
+      if (p.y < canvas.height + 20) alive = true;
+      if (p.y > canvas.height + 20) {
+        if (active) { p.y = -20; p.x = Math.random() * innerWidth; }
+        else return;
+      }
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    });
+    if (active || alive) requestAnimationFrame(loop);
+  })();
+
+  const EMOJIS = ['💞','🎂','✨','🔥','💫','🎉','💘','⭐','🫶','💝'];
+  function spawnEmoji() {
+    const el = document.createElement('div');
+    el.className = 'emoji-float';
+    el.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+    el.style.setProperty('--x', Math.random() * 95 + 'vw');
+    el.style.setProperty('--dur', (Math.random() * 5 + 6) + 's');
+    el.style.setProperty('--delay', (Math.random() * 3) + 's');
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 12000);
+  }
+  setInterval(spawnEmoji, 1800);
+
+  document.addEventListener('click', () => {
+    const a = document.getElementById('bg-audio');
+    if (a && a.src && a.paused) a.play().catch(() => {});
+  }, { once: true });
+</script>
+</body>
+</html>
